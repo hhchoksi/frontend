@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import './App.css'
 import FormMaker from './components/FormMaker';
+import FormPreview from './components/Preview';
 
 function App() {
   const [formData, setFormData] = useState({
@@ -28,6 +29,11 @@ function App() {
           onDataChange={handleFormDataChange}
           onModeChange={handleModeChange}
         />
+      )}
+      {mode === 'preview' && (
+        <FormPreview 
+          formData={formData} 
+          onModeChange={handleModeChange}/>
       )}
     </div>
   );

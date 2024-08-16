@@ -36,12 +36,14 @@ function Elements({ element, onUpdate, onDelete }) {
                 value={element.question}
                 onChange={handleQuestionChange}
                 placeholder="Question"
+                className='question'
             />
             <label>
                 <input
                     type="checkbox"
                     checked={element.required}
                     onChange={handleRequiredChange}
+                    className='required'
                 />
                 Required
             </label>

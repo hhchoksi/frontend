@@ -15,7 +15,7 @@ function FormMaker({ formData, onDataChange, onModeChange }) {
     const addElement = (response) => {
         const newElement = {
             id: Date.now().toString(),
-            type: response.type,
+            type: response,
             value: '',
             options: response === 'multipleChoice' || response === 'checkboxes' || response === 'dropdown' ? [Option] : undefined,
         };
@@ -90,7 +90,7 @@ function FormMaker({ formData, onDataChange, onModeChange }) {
                         onDragEnd={handleDragEnd}
                         className="draggable-element"
                     >
-                        <FormElement
+                        <Elements
                             element={element}
                             onUpdate={(updatedElement) => updateElement(element.id, updatedElement)}
                             onDelete={() => deleteElement(element.id)}

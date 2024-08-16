@@ -33,3 +33,26 @@
   border-color: #646cff;
   box-shadow: 0 0 5px #646cff;
 }
+
+.question {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  font-size: 1.2em;
+  border: 1px solid #ccc;
+}
+
+.question:focus {
+  outline: none;
+  border-color: #646cff;
+  box-shadow: 0 0 5px #646cff;
+}
+
+.option {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 15px;
+  gap: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+}
