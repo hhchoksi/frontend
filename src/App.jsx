@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import './App.css'
 import FormMaker from './components/FormMaker';
 import FormPreview from './components/Preview';
+import FormSubmission from './components/Submission';
 
 function App() {
   const [formData, setFormData] = useState({
@@ -32,6 +33,11 @@ function App() {
       )}
       {mode === 'preview' && (
         <FormPreview 
+          formData={formData} 
+          onModeChange={handleModeChange}/>
+      )}
+      {mode === 'submit' && (
+        <FormSubmission 
           formData={formData} 
           onModeChange={handleModeChange}/>
       )}
