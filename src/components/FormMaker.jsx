@@ -38,10 +38,11 @@ function FormMaker({ formData, onDataChange, onModeChange }) {
         setDrag(formData.elements[index]);
     }
 
-    const handleDragOver = (index) => {
+    const handleDragOver = (event, index) => {
+        event.preventDefault();
         const draggedOverElement = formData.elements[index];
 
-        if (drag = draggedOverElement) {
+        if (drag === draggedOverElement) {
             return;
         }
 
@@ -86,7 +87,7 @@ function FormMaker({ formData, onDataChange, onModeChange }) {
                         key={element.id}
                         draggable
                         onDragStart={(e) => handleDragStart(e, index)}
-                        onDragOver={() => handleDragOver(index)}
+                        onDragOver={() => handleDragOver(e, index)}
                         onDragEnd={handleDragEnd}
                         className="draggable-element"
                     >
