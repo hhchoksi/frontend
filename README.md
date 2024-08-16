@@ -23,10 +23,14 @@ npm run dev
 
 To build for production:
 npm run build
+
+Edit Mode:
 ![image](https://github.com/user-attachments/assets/719e7950-2eae-482e-9beb-dfaa207d0be7)
 
+Preview Mode:
 ![image](https://github.com/user-attachments/assets/e3f301a4-85a4-4fab-9f03-094942e27eba)
 
+Submission Mode:
 ![image](https://github.com/user-attachments/assets/d3f17b26-f474-4aa3-8b2c-c6d88257b9de)
 
 
