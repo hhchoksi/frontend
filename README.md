@@ -5,7 +5,7 @@ A React-based application mimicking Google Forms functionality.
 ## Quick Start
 
 1. Clone the repo:
-git clone https://github.com/your-username/google-forms-clone.git
+ https://github.com/your-username/frontend.git
 2. Install dependencies:
 cd google-forms-clone
 npm install
