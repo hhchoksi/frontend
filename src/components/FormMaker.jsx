@@ -19,7 +19,41 @@ function FormMaker({ formData, onDataChange, onModeChange }) {
             value: '',
             options: response === 'multipleChoice' || response === 'checkboxes' || response === 'dropdown' ? [Option] : undefined,
         };
-        onDataChange({...formData, elements: [...formData.elements, newElement] });
+        onDataChange({ ...formData, elements: [...formData.elements, newElement] });
+    }
+
+    const updateElement = (id, updatedElement) => {
+        const updatedElements = [...formData.elements];
+        updatedElements[updatedElements.findIndex((event) => event.id === id)] = updatedElement;
+        onDataChange({...formData, elements: updatedElements });
+    };
+
+    const deleteElement = (id) => {
+        const updatedElements = formData.elements.filter((event) => event.id !== id);
+        onDataChange({...formData, elements: updatedElements });
+    }
+
+    const handleDragStart = (event, index) => {
+        event.dataTransfer.setData('elementId', event.target.id);
+        setDrag(formData.elements[index]);
+    }
+
+    const handleDragOver = (index) => {
+        const draggedOverElement = formData.elements[index];
+
+        if (drag = draggedOverElement) {
+            return;
+        }
+
+        let elements = formData.elements.filter((event) => event !== drag);
+
+        elements.splice(index, 0, draggedOverElement);
+
+        onDataChange({...formData, elements });
+    }
+
+    const handleDragEnd = () => {
+        setDrag(null);
     }
 
     return (
@@ -46,6 +80,25 @@ function FormMaker({ formData, onDataChange, onModeChange }) {
                 <button onClick={() => addElement('date')}>Add Date</button>
                 <button onClick={() => addElement('fileUpload')}>Add File Upload</button>
             </div>
+            <div className="form-elements">
+                {formData.elements.map((element, index) => (
+                    <div
+                        key={element.id}
+                        draggable
+                        onDragStart={(e) => handleDragStart(e, index)}
+                        onDragOver={() => handleDragOver(index)}
+                        onDragEnd={handleDragEnd}
+                        className="draggable-element"
+                    >
+                        <FormElement
+                            element={element}
+                            onUpdate={(updatedElement) => updateElement(element.id, updatedElement)}
+                            onDelete={() => deleteElement(element.id)}
+                        />
+                    </div>
+                ))}
+            </div>
+            <button onClick={() => onModeChange('preview')}>Preview Form</button>
         </div >
     );
 }

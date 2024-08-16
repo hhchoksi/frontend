@@ -9,7 +9,7 @@ function App() {
     elements: []
   });
 
-  const [mode, setMode] = useState('edit'); 
+  const [mode, setMode] = useState('edit');
 
   const handleFormDataChange = (newFormdata) => {
     setFormData(newFormdata);
@@ -21,11 +21,14 @@ function App() {
 
   return (
     <div className="App">
-      <FormMaker 
-          formData={formData} 
-          onFormDataChange={handleFormDataChange}
+      <h1>Forms</h1>
+      {mode === 'edit' && (
+        <FormMaker
+          formData={formData}
+          onDataChange={handleFormDataChange}
           onModeChange={handleModeChange}
-      />
+        />
+      )}
     </div>
   );
 }
